@@ -36,6 +36,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   int _selectedIndex = 0; // 현 페이지 index 설정
+  int _bottomSelectedIndex = 0; // bottomNavigation index
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +80,15 @@ class _MyHomePageState extends State<MyHomePage>
               ),
             ),
           ),
+          bottomNavigationBar: BottomNavigationBar(
+            items: const [
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: "팀 피드"),
+              BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "팔로잉"),
             ],
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            currentIndex: _bottomSelectedIndex,
+            onTap: _onBottomTapped,
           ),
           body: SafeArea(
             child: Column(
@@ -172,5 +181,11 @@ class _MyHomePageState extends State<MyHomePage>
         );
       },
     );
+  }
+
+  void _onBottomTapped(int value) {
+    setState(() {
+      _bottomSelectedIndex = value;
+    });
   }
 }
