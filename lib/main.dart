@@ -35,6 +35,7 @@ class _MyHomePageState extends State<MyHomePage>
     'Four'
   ]; // dropdown item list
   var _selecteddropDownItems = 'instagram'; // dropdown 선택된 아이템
+  bool isFavorite = false;
   @override
   void initState() {
     // tabcontroller 초기 설정
@@ -167,8 +168,17 @@ class _MyHomePageState extends State<MyHomePage>
                       MainAxisAlignment.spaceBetween, // row item만의 간격 동일
                   children: [
                     IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.favorite_border),
+                      onPressed: () {
+                        setState(() {
+                          isFavorite = !isFavorite;
+                        });
+                      },
+                      icon: isFavorite
+                          ? const Icon(
+                              Icons.favorite,
+                              color: Colors.pink,
+                            )
+                          : const Icon(Icons.favorite_border),
                     ),
                     IconButton(
                       onPressed: () {},
