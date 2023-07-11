@@ -186,6 +186,7 @@ class _MyHomePageState extends State<MyHomePage>
   }
 
   void _onBottomTapped(int value) {
+    value == 0 ? print("home") : print("following");
     setState(() {
       _bottomSelectedIndex = value;
     });
