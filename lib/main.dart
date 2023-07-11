@@ -5,8 +5,15 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool Heart = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +27,11 @@ class MyApp extends StatelessWidget {
             children: [
               SizedBox(width: 20),
               Text(
+                // 사용자 이름
                 "name",
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 20,
+                  fontSize: 22,
                 ),
               ),
               Icon(
@@ -42,6 +50,7 @@ class MyApp extends StatelessWidget {
               Row(
                 children: [
                   ClipRRect(
+                    // 사용자 이미지
                     borderRadius: BorderRadius.circular(125),
                     child: Image.network(
                       'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbj4oa7%2FbtqLJWFLMgd%2Fwu4GV8PKbXdICuyW0me0zk%2Fimg.jpg',
@@ -52,10 +61,15 @@ class MyApp extends StatelessWidget {
                   ),
                   SizedBox(width: MediaQuery.of(context).size.width * 0.2),
                   GestureDetector(
-                    onTap: () {},
+                    // 하트 이모티콘 (클릭)
+                    onTap: () {
+                      setState(() {
+                        Heart = !Heart;
+                      });
+                    },
                     child: Icon(
-                      CupertinoIcons.heart,
-                      color: Colors.black,
+                      Heart ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
+                      color: Heart ? Colors.redAccent : Colors.black,
                       size: 70,
                     ),
                   ),
@@ -63,6 +77,7 @@ class MyApp extends StatelessWidget {
               ),
               SizedBox(height: MediaQuery.of(context).size.width * 0.1),
               Text(
+                // 개인 메시지
                 "data",
                 style: TextStyle(fontSize: 20, color: Colors.black),
               ),
@@ -86,9 +101,11 @@ class MyApp extends StatelessWidget {
                 label: '',
               ),
               BottomNavigationBarItem(
+                // 홈 버튼
                 icon: Icon(
                   Icons.home_filled,
                   color: Colors.black,
+                  size: 40,
                 ),
                 label: '',
               ),
