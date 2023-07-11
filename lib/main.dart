@@ -37,14 +37,10 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   int _selectedIndex = 0; // 현 페이지 index 설정
   late TabController _tabController; // tabcontroller 선언
-  List<String> dropDownItems = <String>[
-    'Instagram',
-    'Two',
-    'Three',
-    'Four'
-  ]; // dropdown item list
+
   var _selecteddropDownItems = 'instagram'; // dropdown 선택된 아이템
   bool isFavorite = false;
+
   @override
   void initState() {
     // tabcontroller 초기 설정
@@ -66,6 +62,8 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return Consumer<FeedService>(
       builder: (context, feedService, child) {
+        List<Feed> feedList = feedService.feedList;
+        List<String> dropDownItems = feedList.map((e) => e.person).toList();
         return Scaffold(
           appBar: AppBar(
             elevation: 0, // appbar body와의 높이 설정
@@ -186,10 +184,10 @@ class _MyHomePageState extends State<MyHomePage>
                         IconButton(
                           onPressed: () {
                             setState(() {
-                              isFavorite = !isFavorite;
+                              feedService.updateFavoriteFeed(index: 0);
                             });
                           },
-                          icon: isFavorite
+                          icon: feedList[0].isFavorite
                               ? const Icon(
                                   Icons.favorite,
                                   color: Colors.pink,

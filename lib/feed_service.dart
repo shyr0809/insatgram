@@ -28,4 +28,16 @@ class FeedService extends ChangeNotifier {
     Feed(person: "ㅁㅁㅁ", content: "ㅈㅈㅈㅈㅈ"),
     Feed(person: "ㅎㅎㅎ", content: "ㅈㅈㅈㅈㅈ"),
   ];
+
+  updateFavoriteFeed({required int index}) {
+    Feed feed = feedList[index];
+    feed.isFavorite = !feed.isFavorite;
+    notifyListeners();
+  }
+
+  updateContentFeed({required int index, required String content}) {
+    Feed feed = feedList[index];
+    feed.content = content;
+    notifyListeners();
+  }
 }
