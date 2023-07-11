@@ -73,8 +73,8 @@ class _MyHomePageState extends State<MyHomePage>
                 }).toList(),
                 value: dropDownItems[_selectedIndex], // 현 item value 설정
                 onChanged: (String? value) {
-                  print(value);
                   setState(() {
+                    _selectedIndex = dropDownItems.indexOf(value!);
                     // Navigator.push(context, MaterialPageRoute(builder: (_) => )))
                   });
                 },
