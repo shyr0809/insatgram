@@ -5,14 +5,47 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+    );
+  }
 }
 
-class _MyAppState extends State<MyApp> {
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: IconButton(
+          icon: Icon(Icons.abc),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PersonalPage()),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class PersonalPage extends StatefulWidget {
+  const PersonalPage({Key? key}) : super(key: key);
+
+  @override
+  State<PersonalPage> createState() => _PersonalPageState();
+}
+
+class _PersonalPageState extends State<PersonalPage> {
   bool Heart = false;
 
   @override
@@ -84,40 +117,25 @@ class _MyAppState extends State<MyApp> {
             ],
           ),
         ),
-        bottomNavigationBar: Theme(
-          data: ThemeData(
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-          ),
-          child: BottomNavigationBar(
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_filled,
-                  color: Colors.transparent,
-                ),
-                label: '',
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.black,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home_filled,
+                size: 40,
               ),
-              BottomNavigationBarItem(
-                // 홈 버튼
-                icon: Icon(
-                  Icons.home_filled,
-                  color: Colors.black,
-                  size: 40,
-                ),
-                label: '',
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                CupertinoIcons.heart_fill,
+                size: 38,
               ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_filled,
-                  color: Colors.transparent,
-                ),
-                label: '',
-              ),
-            ],
-          ),
+              label: 'Like',
+            ),
+          ],
         ),
       ),
     );
