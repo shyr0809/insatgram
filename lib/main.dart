@@ -43,7 +43,9 @@ class _MyHomePageState extends State<MyHomePage>
     return Consumer<FeedService>(
       builder: (context, feedService, child) {
         List<Feed> feedList = feedService.feedList;
-        List<String> dropDownItems = feedList.map((e) => e.person).toList();
+        List<String> dropDownItems = feedList
+            .map((e) => e.person == "12조 자산가들" ? "insatgram" : e.person)
+            .toList();
         return Scaffold(
           appBar: AppBar(
             elevation: 0, // appbar body와의 높이 설정
@@ -72,8 +74,6 @@ class _MyHomePageState extends State<MyHomePage>
                 onChanged: (String? value) {
                   print(value);
                   setState(() {
-                    _selecteddropDownItems = value!;
-                    _selectedIndex = dropDownItems.indexOf(value);
                     // Navigator.push(context, MaterialPageRoute(builder: (_) => )))
                   });
                 },
