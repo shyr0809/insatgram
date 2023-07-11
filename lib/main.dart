@@ -26,6 +26,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
+  List<String> dropDownItems = <String>['Instagram', 'Two', 'Three', 'Four'];
+  var _selecteddropDownItems = 'instagram';
 
   }
 
