@@ -107,6 +107,19 @@ class _MyHomePageState extends State<MyHomePage>
                     color: Colors.yellow,
                   ),
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.favorite_border),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.edit),
+                    ),
+                  ],
+                ),
             ),
           ],
         ),
