@@ -63,8 +63,24 @@ class _MyHomePageState extends State<MyHomePage>
           ),
         ),
       ),
+      bottomNavigationBar: TabBar(
+        controller: _tabController,
+        tabs: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.1,
+            height: MediaQuery.of(context).size.width * 0.1,
+            child: const Tab(
+              icon: Icon(
+                Icons.home,
+                color: Colors.black,
+              ),
             ),
+          ),
+        ],
+      ),
       body: SafeArea(
+        child: TabBarView(
+          controller: _tabController,
           children: [
             Column(
               children: [
