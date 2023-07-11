@@ -94,28 +94,31 @@ class _MyHomePageState extends State<MyHomePage>
           body: SafeArea(
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment
-                      .spaceEvenly, // row item끼리의 간격+첫번째, 마지막 item 좌우 간격 동일
-                  children: [
-                    for (int i = 0; i < 5; i++)
-                      ElevatedButton(
-                        onPressed: () {
-                          print(i.toString());
-                          // Navigator.push(context, MaterialPageRoute(builder: (_) => )))
-                        },
-                        child: Text(i.toString()), // 팀원 image 넣기
-                        style: ElevatedButton.styleFrom(
-                          fixedSize: Size(
-                              MediaQuery.of(context).size.width * 0.19,
-                              MediaQuery.of(context).size.width * 0.19),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(// 원형 모양 버튼
-                                MediaQuery.of(context).size.width * 0.1),
+                Container(
+                  height: 75,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      for (int i = 0; i < feedList.length - 1; i++)
+                        Padding(
+                          padding: const EdgeInsets.all(2.5),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              print(i.toString());
+                              // Navigator.push(context, MaterialPageRoute(builder: (_) => )))
+                            },
+                            child: Text(feedList[i + 1].person), // 팀원 image 넣기
+                            style: ElevatedButton.styleFrom(
+                              fixedSize: const Size(73.5, 73.5),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(// 원형 모양 버튼
+                                    MediaQuery.of(context).size.width * 0.1),
+                              ),
+                            ),
                           ),
                         ),
-                      )
-                  ],
+                    ],
+                  ),
                 ),
                 Container(
                   // feed title 영역
