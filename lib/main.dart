@@ -43,12 +43,6 @@ class _MyHomePageState extends State<MyHomePage>
       length: 1,
       vsync: this,
     );
-    _tabController.addListener(() {
-      // tab버튼 누를 경우 홈으로
-      setState(() {
-        _selectedIndex = 0;
-      });
-    });
   }
 
   @override
@@ -97,6 +91,13 @@ class _MyHomePageState extends State<MyHomePage>
       bottomNavigationBar: TabBar(
         // bottomnavigationbar에 tabbar 넣기
         controller: _tabController, // tab을 했을 경우 event를 위해서 controller 설정
+        onTap: (index) {
+          // tab버튼 누를 경우 홈으로
+          print("home");
+          setState(() {
+            _selectedIndex = 0;
+          });
+        },
         tabs: [
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.1,
