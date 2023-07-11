@@ -64,6 +64,29 @@ class _MyHomePageState extends State<MyHomePage>
         ),
       ),
             ),
+      body: SafeArea(
+          children: [
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    for (int i = 0; i < 5; i++)
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(i.toString()), // 팀원 image 넣기
+                        style: ElevatedButton.styleFrom(
+                          fixedSize: Size(
+                              MediaQuery.of(context).size.width * 0.19,
+                              MediaQuery.of(context).size.width * 0.19),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                MediaQuery.of(context).size.width * 0.1),
+                          ),
+                        ),
+                      )
+                  ],
+                ),
             ),
           ],
         ),
