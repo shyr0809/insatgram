@@ -26,9 +26,23 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
+  int _selectedIndex = 0;
+  late TabController _tabController;
   List<String> dropDownItems = <String>['Instagram', 'Two', 'Three', 'Four'];
   var _selecteddropDownItems = 'instagram';
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(
+      length: 1,
+      vsync: this,
+    );
+  }
 
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override
