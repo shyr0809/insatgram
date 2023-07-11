@@ -126,9 +126,9 @@ class _MyHomePageState extends State<MyHomePage>
                   margin: const EdgeInsets.all(5),
                   padding: const EdgeInsets.all(5),
                   alignment: Alignment.centerLeft,
-                  child: const Text(
-                    "12조 자산가들",
-                    style: TextStyle(
+                  child: Text(
+                    feedList[0].person,
+                    style: const TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
                     ),
@@ -168,16 +168,14 @@ class _MyHomePageState extends State<MyHomePage>
                     ),
                   ],
                 ),
-                const Expanded(
+                Expanded(
                   // 남은 공간 다 차지
                   child: SingleChildScrollView(
-                    // 스크롤 가능한 영역
-                    child: Text(
-                      // feed text 설정
-                      "ddddd145\n\n\n\n\n\n\n\n\n14352534523452343gddddddfdds\ng23q45as\ndfafasdfsasdf\nasdfsdaaaaaaaaaaaa\naaaaaddddddddddddd]\nddddddddddddddddddddddddddddddddddddddddddaaaaaaaaaaaaaaaaaaaaa42342342",
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
+                      // 스크롤 가능한 영역
+                      child: Text(
+                    feedList[0].content.toString(),
+                    textAlign: TextAlign.start,
+                  )),
                 )
               ],
             ),
