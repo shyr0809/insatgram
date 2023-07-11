@@ -100,6 +100,13 @@ class _MyHomePageState extends State<MyHomePage>
                     ),
                   ),
                 ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: MediaQuery.of(context).size.width * 0.75,
+                  child: Container(
+                    color: Colors.yellow,
+                  ),
+                ),
             ),
           ],
         ),
