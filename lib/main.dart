@@ -80,10 +80,11 @@ class _MyHomePageState extends State<MyHomePage>
             }).toList(),
             value: dropDownItems[_selectedIndex], // 현 item value 설정
             onChanged: (String? value) {
-              //
+              print(value);
               setState(() {
                 _selecteddropDownItems = value!;
                 _selectedIndex = dropDownItems.indexOf(value);
+                // Navigator.push(context, MaterialPageRoute(builder: (_) => )))
               });
             },
           ),
@@ -126,7 +127,10 @@ class _MyHomePageState extends State<MyHomePage>
                   children: [
                     for (int i = 0; i < 5; i++)
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          print(i.toString());
+                          // Navigator.push(context, MaterialPageRoute(builder: (_) => )))
+                        },
                         child: Text(i.toString()), // 팀원 image 넣기
                         style: ElevatedButton.styleFrom(
                           fixedSize: Size(
@@ -181,7 +185,9 @@ class _MyHomePageState extends State<MyHomePage>
                           : const Icon(Icons.favorite_border),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        print("edit");
+                      },
                       icon: const Icon(Icons.edit),
                     ),
                   ],
