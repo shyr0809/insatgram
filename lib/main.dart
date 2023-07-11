@@ -37,6 +37,12 @@ class _MyHomePageState extends State<MyHomePage>
       length: 1,
       vsync: this,
     );
+    _tabController.addListener(() {
+      // tab버튼 누를 경우 홈으로
+      setState(() {
+        _selectedIndex = 0;
+      });
+    });
   }
 
   @override
