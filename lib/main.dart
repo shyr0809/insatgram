@@ -26,12 +26,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
-  int _selectedIndex = 0;
-  late TabController _tabController;
-  List<String> dropDownItems = <String>['Instagram', 'Two', 'Three', 'Four'];
-  var _selecteddropDownItems = 'instagram';
+  int _selectedIndex = 0; // 현 페이지 index 설정
+  late TabController _tabController; // tabcontroller 선언
+  List<String> dropDownItems = <String>[
+    'Instagram',
+    'Two',
+    'Three',
+    'Four'
+  ]; // dropdown item list
+  var _selecteddropDownItems = 'instagram'; // dropdown 선택된 아이템
   @override
   void initState() {
+    // tabcontroller 초기 설정
     super.initState();
     _tabController = TabController(
       length: 1,
@@ -47,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   void dispose() {
+    // tabcontroller 초기 해제
     _tabController.dispose();
     super.dispose();
   }
@@ -55,15 +62,18 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
+        elevation: 0, // appbar body와의 높이 설정
         backgroundColor: Colors.white,
-        leadingWidth: MediaQuery.of(context).size.width * 0.5,
+        leadingWidth:
+            MediaQuery.of(context).size.width * 0.5, // leading 가로 앱 사이즈 가로의 50%
         leading: Padding(
           padding: const EdgeInsets.only(left: 20),
           child: DropdownButton(
-            underline: const SizedBox.shrink(),
-            alignment: Alignment.center,
+            // dropdownbutton
+            underline: const SizedBox.shrink(), // dropdown item 밑줄 설정
+            alignment: Alignment.center, // dropdown item 가운데 설정
             items: dropDownItems.map<DropdownMenuItem<String>>((String value) {
+              // dropdown item 넣는 코드인데 어떤 원리로 되는지 잘 모르겠습니다.
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(
@@ -73,8 +83,9 @@ class _MyHomePageState extends State<MyHomePage>
                 ),
               );
             }).toList(),
-            value: dropDownItems[_selectedIndex],
+            value: dropDownItems[_selectedIndex], // 현 item value 설정
             onChanged: (String? value) {
+              //
               setState(() {
                 _selecteddropDownItems = value!;
                 _selectedIndex = dropDownItems.indexOf(value);
@@ -84,12 +95,14 @@ class _MyHomePageState extends State<MyHomePage>
         ),
       ),
       bottomNavigationBar: TabBar(
-        controller: _tabController,
+        // bottomnavigationbar에 tabbar 넣기
+        controller: _tabController, // tab을 했을 경우 event를 위해서 controller 설정
         tabs: [
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.1,
             height: MediaQuery.of(context).size.width * 0.1,
             child: const Tab(
+              // tab item 설정
               icon: Icon(
                 Icons.home,
                 color: Colors.black,
@@ -100,12 +113,14 @@ class _MyHomePageState extends State<MyHomePage>
       ),
       body: SafeArea(
         child: TabBarView(
-          controller: _tabController,
+          // tab했을 경우 돌아올 layout에 tabbarview 설정
+          controller: _tabController, // tab을 했을 경우 event를 위해서 controller 연결
           children: [
             Column(
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment
+                      .spaceEvenly, // row item끼리의 간격+첫번째, 마지막 item 좌우 간격 동일
                   children: [
                     for (int i = 0; i < 5; i++)
                       ElevatedButton(
@@ -116,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage>
                               MediaQuery.of(context).size.width * 0.19,
                               MediaQuery.of(context).size.width * 0.19),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
+                            borderRadius: BorderRadius.circular(// 원형 모양 버튼
                                 MediaQuery.of(context).size.width * 0.1),
                           ),
                         ),
@@ -124,6 +139,7 @@ class _MyHomePageState extends State<MyHomePage>
                   ],
                 ),
                 Container(
+                  // feed title 영역
                   color: Colors.grey,
                   margin: const EdgeInsets.all(5),
                   padding: const EdgeInsets.all(5),
@@ -137,6 +153,7 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                 ),
                 SizedBox(
+                  // feed image 영역
                   width: MediaQuery.of(context).size.width * 0.9,
                   height: MediaQuery.of(context).size.width * 0.75,
                   child: Container(
@@ -144,7 +161,9 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // feed button 영역
+                  mainAxisAlignment:
+                      MainAxisAlignment.spaceBetween, // row item만의 간격 동일
                   children: [
                     IconButton(
                       onPressed: () {},
@@ -157,8 +176,11 @@ class _MyHomePageState extends State<MyHomePage>
                   ],
                 ),
                 const Expanded(
+                  // 남은 공간 다 차지
                   child: SingleChildScrollView(
+                    // 스크롤 가능한 영역
                     child: Text(
+                      // feed text 설정
                       "ddddd14514352534523452343gddddddfddsg23q45asdfafasdfsasdfasdfsdaaaaaaaaaaaaaaaaadddddddddddddddddddddddddddddddddddddddddddddddddddddddaaaaaaaaaaaaaaaaaaaaa42342342",
                       textAlign: TextAlign.start,
                     ),
