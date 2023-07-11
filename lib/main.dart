@@ -120,6 +120,15 @@ class _MyHomePageState extends State<MyHomePage>
                     ),
                   ],
                 ),
+                const Expanded(
+                  child: SingleChildScrollView(
+                    child: Text(
+                      "ddddd14514352534523452343gddddddfddsg23q45asdfafasdfsasdfasdfsdaaaaaaaaaaaaaaaaadddddddddddddddddddddddddddddddddddddddddddddddddddddddaaaaaaaaaaaaaaaaaaaaa42342342",
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                )
+              ],
             ),
           ],
         ),
