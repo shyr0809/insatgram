@@ -87,6 +87,19 @@ class _MyHomePageState extends State<MyHomePage>
                       )
                   ],
                 ),
+                Container(
+                  color: Colors.grey,
+                  margin: const EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
+                  alignment: Alignment.centerLeft,
+                  child: const Text(
+                    "12조 자산가들",
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
             ),
           ],
         ),
