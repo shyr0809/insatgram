@@ -36,27 +36,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   int _selectedIndex = 0; // 현 페이지 index 설정
-  late TabController _tabController; // tabcontroller 선언
-
-  var _selecteddropDownItems = 'instagram'; // dropdown 선택된 아이템
-  bool isFavorite = false;
-
-  @override
-  void initState() {
-    // tabcontroller 초기 설정
-    super.initState();
-    _tabController = TabController(
-      length: 1,
-      vsync: this,
-    );
-  }
-
-  @override
-  void dispose() {
-    // tabcontroller 초기 해제
-    _tabController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,121 +79,93 @@ class _MyHomePageState extends State<MyHomePage>
               ),
             ),
           ),
-          bottomNavigationBar: TabBar(
-            // bottomnavigationbar에 tabbar 넣기
-            controller: _tabController, // tab을 했을 경우 event를 위해서 controller 설정
-            onTap: (index) {
-              // tab버튼 누를 경우 홈으로
-              print("home");
-              setState(() {
-                _selectedIndex = 0;
-              });
-            },
-            tabs: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.1,
-                height: MediaQuery.of(context).size.width * 0.1,
-                child: const Tab(
-                  // tab item 설정
-                  icon: Icon(
-                    Icons.home,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
             ],
           ),
           body: SafeArea(
-            child: TabBarView(
-              // tab했을 경우 돌아올 layout에 tabbarview 설정
-              controller: _tabController, // tab을 했을 경우 event를 위해서 controller 연결
+            child: Column(
               children: [
-                Column(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment
+                      .spaceEvenly, // row item끼리의 간격+첫번째, 마지막 item 좌우 간격 동일
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment
-                          .spaceEvenly, // row item끼리의 간격+첫번째, 마지막 item 좌우 간격 동일
-                      children: [
-                        for (int i = 0; i < 5; i++)
-                          ElevatedButton(
-                            onPressed: () {
-                              print(i.toString());
-                              // Navigator.push(context, MaterialPageRoute(builder: (_) => )))
-                            },
-                            child: Text(i.toString()), // 팀원 image 넣기
-                            style: ElevatedButton.styleFrom(
-                              fixedSize: Size(
-                                  MediaQuery.of(context).size.width * 0.19,
-                                  MediaQuery.of(context).size.width * 0.19),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(// 원형 모양 버튼
-                                    MediaQuery.of(context).size.width * 0.1),
-                              ),
-                            ),
-                          )
-                      ],
-                    ),
-                    Container(
-                      // feed title 영역
-                      color: Colors.grey,
-                      margin: const EdgeInsets.all(5),
-                      padding: const EdgeInsets.all(5),
-                      alignment: Alignment.centerLeft,
-                      child: const Text(
-                        "12조 자산가들",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
+                    for (int i = 0; i < 5; i++)
+                      ElevatedButton(
+                        onPressed: () {
+                          print(i.toString());
+                          // Navigator.push(context, MaterialPageRoute(builder: (_) => )))
+                        },
+                        child: Text(i.toString()), // 팀원 image 넣기
+                        style: ElevatedButton.styleFrom(
+                          fixedSize: Size(
+                              MediaQuery.of(context).size.width * 0.19,
+                              MediaQuery.of(context).size.width * 0.19),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(// 원형 모양 버튼
+                                MediaQuery.of(context).size.width * 0.1),
+                          ),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      // feed image 영역
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      height: MediaQuery.of(context).size.width * 0.75,
-                      child: Container(
-                        color: Colors.yellow,
-                      ),
-                    ),
-                    Row(
-                      // feed button 영역
-                      mainAxisAlignment:
-                          MainAxisAlignment.spaceBetween, // row item만의 간격 동일
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            setState(() {
-                              feedService.updateFavoriteFeed(index: 0);
-                            });
-                          },
-                          icon: feedList[0].isFavorite
-                              ? const Icon(
-                                  Icons.favorite,
-                                  color: Colors.pink,
-                                )
-                              : const Icon(Icons.favorite_border),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            print("edit");
-                          },
-                          icon: const Icon(Icons.edit),
-                        ),
-                      ],
-                    ),
-                    const Expanded(
-                      // 남은 공간 다 차지
-                      child: SingleChildScrollView(
-                        // 스크롤 가능한 영역
-                        child: Text(
-                          // feed text 설정
-                          "ddddd14514352534523452343gddddddfddsg23q45asdfafasdfsasdfasdfsdaaaaaaaaaaaaaaaaadddddddddddddddddddddddddddddddddddddddddddddddddddddddaaaaaaaaaaaaaaaaaaaaa42342342",
-                          textAlign: TextAlign.start,
-                        ),
-                      ),
-                    )
+                      )
                   ],
                 ),
+                Container(
+                  // feed title 영역
+                  color: Colors.grey,
+                  margin: const EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
+                  alignment: Alignment.centerLeft,
+                  child: const Text(
+                    "12조 자산가들",
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  // feed image 영역
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: MediaQuery.of(context).size.width * 0.75,
+                  child: Container(
+                    color: Colors.yellow,
+                  ),
+                ),
+                Row(
+                  // feed button 영역
+                  mainAxisAlignment:
+                      MainAxisAlignment.spaceBetween, // row item만의 간격 동일
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          feedService.updateFavoriteFeed(index: 0);
+                        });
+                      },
+                      icon: feedList[0].isFavorite
+                          ? const Icon(
+                              Icons.favorite,
+                              color: Colors.pink,
+                            )
+                          : const Icon(Icons.favorite_border),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        print("edit");
+                      },
+                      icon: const Icon(Icons.edit),
+                    ),
+                  ],
+                ),
+                const Expanded(
+                  // 남은 공간 다 차지
+                  child: SingleChildScrollView(
+                    // 스크롤 가능한 영역
+                    child: Text(
+                      // feed text 설정
+                      "ddddd145\n\n\n\n\n\n\n\n\n14352534523452343gddddddfdds\ng23q45as\ndfafasdfsasdf\nasdfsdaaaaaaaaaaaa\naaaaaddddddddddddd]\nddddddddddddddddddddddddddddddddddddddddddaaaaaaaaaaaaaaaaaaaaa42342342",
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                )
               ],
             ),
           ),
