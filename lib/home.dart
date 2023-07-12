@@ -121,7 +121,15 @@ class CrewPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(),
+      body: ListView(
+        children: <Widget>[
+          ListTile(
+            leading: Icon(Icons.map),
+            trailing:
+                IconButton(onPressed: () {}, icon: Icon(Icons.favorite_border)),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -132,18 +140,36 @@ class LikePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        toolbarHeight: 60,
-        title: Text(
-          'Like',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 22,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          toolbarHeight: 60,
+          title: Text(
+            'Like',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 22,
+            ),
           ),
         ),
-      ),
-    );
+        body: ListView(
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.map),
+              trailing: IconButton(
+                  onPressed: () {}, icon: Icon(Icons.favorite_border)),
+            ),
+            ListTile(
+              leading: Icon(Icons.map),
+              trailing: IconButton(
+                  onPressed: () {}, icon: Icon(Icons.favorite_border)),
+            ),
+            ListTile(
+              leading: Icon(Icons.map),
+              trailing: IconButton(
+                  onPressed: () {}, icon: Icon(Icons.favorite_border)),
+            )
+          ],
+        ));
   }
 }
