@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
   final List<Map<String, dynamic>> data3 = [
     {
       'name': 'kwon',
-      'textData': '개인 소개글333',
+      'textData': '개인 소개글444',
       'imageUrl':
           'https://image.dongascience.com/Photo/2019/05/3e95c45fbe6710365e999ebbd32ed37e.jpg',
     }
