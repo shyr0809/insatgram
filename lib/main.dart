@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'like_provider.dart';
-import 'home.dart';
 import 'package:insatgram/feed_service.dart';
 import 'package:provider/provider.dart';
 
 import 'main_layout.dart';
-
-import 'pages/home_page.dart';
 
 void main() {
   runApp(
