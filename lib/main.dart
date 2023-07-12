@@ -1,28 +1,32 @@
 import 'package:flutter/material.dart';
 import 'like_provider.dart';
 import 'home.dart';
+import 'package:insatgram/feed_service.dart';
 import 'package:provider/provider.dart';
 
+import 'main_layout.dart';
+
 void main() {
-  runApp(const MyApp());
+runApp(
+MultiProvider(
+providers: [
+ChangeNotifierProvider(create: (context) => FeedService()),
+],
+child: const MyApp(),
+),
+);
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class MyApp extends StatelessWidget {
+const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
+// This widget is the root of your application.
+@override
+Widget build(BuildContext context) {
+return const MaterialApp(
+debugShowCheckedModeBanner: false,
+title: 'insatgram',
+home: MyHomePage(),
+);
 }
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => LikeList(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Home(),
-      ),
-    );
-  }
 }
