@@ -1,9 +1,9 @@
-import 'dart:html';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:insatgram/pages/kwon_page.dart';
 
+//15번째 줄부터 279번째 줄까지 앱바 밑 스크롤 뷰 위젯입니다.
+//286번째 줄부터 앱바입니다.
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -216,10 +216,7 @@ class _HomePageState extends State<HomePage> {
         Column(
           children: [
             _kwon(),
-            Text(
-              "권용일",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            )
+            Text("권용일", style: TextStyle(fontWeight: FontWeight.bold))
           ],
         ),
         const SizedBox(
@@ -228,10 +225,7 @@ class _HomePageState extends State<HomePage> {
         Column(
           children: [
             _lee(),
-            Text(
-              "이승현",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            )
+            Text("이승현", style: TextStyle(fontWeight: FontWeight.bold))
           ],
         ),
         const SizedBox(
@@ -240,10 +234,7 @@ class _HomePageState extends State<HomePage> {
         Column(
           children: [
             _jang(),
-            Text(
-              "장석수",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            )
+            Text("장석수", style: TextStyle(fontWeight: FontWeight.bold))
           ],
         ),
         const SizedBox(
@@ -252,10 +243,7 @@ class _HomePageState extends State<HomePage> {
         Column(
           children: [
             _hwang(),
-            Text(
-              "황현아",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            )
+            Text("황현아", style: TextStyle(fontWeight: FontWeight.bold))
           ],
         ),
         const SizedBox(
@@ -264,10 +252,7 @@ class _HomePageState extends State<HomePage> {
         Column(
           children: [
             _hong(),
-            Text(
-              "홍현민",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            )
+            Text("홍현민", style: TextStyle(fontWeight: FontWeight.bold))
           ],
         ),
         const SizedBox(
