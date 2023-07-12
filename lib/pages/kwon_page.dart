@@ -7,7 +7,7 @@ class kwon_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('권용일님 페이지'),
+      child: Text('권용일님 페이'),
     );
   }
 }
