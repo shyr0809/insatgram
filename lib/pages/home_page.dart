@@ -225,7 +225,7 @@ class _HomePageState extends State<HomePage> {
         Column(
           children: [
             _lee(),
-            Text("이승현", style: TextStyle(fontWeight: FontWeight.bold))
+            Text("v이승현v", style: TextStyle(fontWeight: FontWeight.bold))
           ],
         ),
         const SizedBox(
