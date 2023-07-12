@@ -1,115 +1,292 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  Widget _twelve() {
+    return InkWell(
+      onTap: () {},
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(65),
+            child: Container(
+                width: 60,
+                height: 60,
+                margin: const EdgeInsets.symmetric(horizontal: 1),
+                decoration:
+                    BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+                child: Image.network(
+                  "https://i.ibb.co/tKn3013/12jo.jpg",
+                  fit: BoxFit.cover,
+                )),
+          ),
+          Positioned(
+              right: 5,
+              bottom: 0,
+              child: Container(
+                width: 20,
+                height: 20,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.blue,
+                    border: Border.all(color: Colors.white, width: 2)),
+                child: const Center(
+                  child: Text(
+                    "+",
+                    style: TextStyle(
+                        fontSize: 15, color: Colors.white, height: 1.1),
+                  ),
+                ),
+              ))
+        ],
+      ),
+    );
+  }
+
+  Widget _kwon() {
+    return InkWell(
+      onTap: () {},
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(65),
+            child: Container(
+              width: 60,
+              height: 60,
+              margin: const EdgeInsets.symmetric(horizontal: 1),
+              decoration:
+                  BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+              child: Image.network(
+                "https://i.ibb.co/RHBWbZ3/kwon.jpg",
+                fit: BoxFit.cover,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _lee() {
+    return InkWell(
+      onTap: () {},
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(65),
+            child: Container(
+                width: 60,
+                height: 60,
+                margin: const EdgeInsets.symmetric(horizontal: 1),
+                decoration:
+                    BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+                child: Image.network(
+                  "https://i.ibb.co/yNmwQH1/lee.jpg",
+                  fit: BoxFit.cover,
+                )),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _jang() {
+    return InkWell(
+      onTap: () {},
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(65),
+            child: Container(
+                width: 60,
+                height: 60,
+                margin: const EdgeInsets.symmetric(horizontal: 1),
+                decoration:
+                    BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+                child: Image.network(
+                  "https://i.ibb.co/Z2y4hDF/jang.jpg",
+                  fit: BoxFit.cover,
+                )),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _hwang() {
+    return InkWell(
+      onTap: () {},
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(65),
+            child: Container(
+                width: 60,
+                height: 60,
+                margin: const EdgeInsets.symmetric(horizontal: 1),
+                decoration:
+                    BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+                child: Image.network(
+                  "https://i.ibb.co/31ks7KK/hwang.jpg",
+                  fit: BoxFit.cover,
+                )),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _hong() {
+    return InkWell(
+      onTap: () {},
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(65),
+            child: Container(
+                width: 60,
+                height: 60,
+                margin: const EdgeInsets.symmetric(horizontal: 1),
+                decoration:
+                    BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+                child: Image.network(
+                  "https://i.ibb.co/wdpPmYB/hong.jpg",
+                  fit: BoxFit.cover,
+                )),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _storyBoardList() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: (Row(children: [
+        const SizedBox(
+          width: 10,
+        ),
+        _twelve(),
+        const SizedBox(
+          width: 10,
+        ),
+        _kwon(),
+        const SizedBox(
+          width: 10,
+        ),
+        _lee(),
+        const SizedBox(
+          width: 10,
+        ),
+        _jang(),
+        const SizedBox(
+          width: 10,
+        ),
+        _hwang(),
+        const SizedBox(
+          width: 10,
+        ),
+        _hong(),
+        const SizedBox(
+          width: 10,
+        ),
+        ...List.generate(
+            7,
+            (index) => ClipRRect(
+                  borderRadius: BorderRadius.circular(60),
+                  child: Container(
+                    width: 65,
+                    height: 65,
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle, color: Colors.grey),
+                    child: Image.network(
+                      "https://i.ibb.co/nngK6j3/startup.png",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ))
+      ])),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.white,
+            title: Text(
+              "insatgram",
+              style: TextStyle(fontSize: 21, color: Colors.black),
+            )),
+        body: ListView(
+          children: [
+            _storyBoardList(),
+            Divider(
+              height: 5,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Row(
+              children: [
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "12조 자산가들",
+                  style: TextStyle(
+                      fontSize: 21,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Divider(
+              height: 5,
+            ),
+            InkWell(
+              onDoubleTap: () {},
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Image.network(
+                  "https://i.ibb.co/vz5Xw9D/12jjo.jpg",
+                  height: 250,
+                  width: 100,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ],
         ),
+        bottomNavigationBar: BottomNavigationBar(
+          fixedColor: Colors.black,
+          unselectedItemColor: Colors.black,
+          showUnselectedLabels: true,
+          selectedFontSize: 12,
+          unselectedFontSize: 12,
+          iconSize: 28,
+          type: BottomNavigationBarType.fixed,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_filled),
+              label: '홈',
+              backgroundColor: Colors.white,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite),
+              label: '좋아요 리스트',
+            ),
+          ],
+          currentIndex: 0,
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
