@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 
 import 'main_layout.dart';
 
+import 'pages/home_page.dart';
+
 void main() {
 runApp(
 MultiProvider(
