@@ -222,6 +222,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  bool isFavorite = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -257,7 +259,11 @@ class _HomePageState extends State<HomePage> {
             height: 5,
           ),
           InkWell(
-            onDoubleTap: () {},
+            onDoubleTap: () {
+              setState(() {
+                isFavorite = !isFavorite;
+              });
+            },
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Image.network(
