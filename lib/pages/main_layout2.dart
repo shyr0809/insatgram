@@ -1,8 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final List<Map<String, dynamic>> data1 = [
     {
       'name': 'hwang',
@@ -11,6 +17,7 @@ class HomePage extends StatelessWidget {
           'https://src.hidoc.co.kr/image/lib/2022/5/12/1652337370806_0.jpg',
     }
   ];
+
   final List<Map<String, dynamic>> data2 = [
     {
       'name': 'lee',
@@ -19,6 +26,7 @@ class HomePage extends StatelessWidget {
           'https://image.utoimage.com/preview/cp872722/2022/12/202212008465_206.jpg',
     }
   ];
+
   final List<Map<String, dynamic>> data3 = [
     {
       'name': 'kwon',

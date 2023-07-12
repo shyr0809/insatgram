@@ -1,3 +1,6 @@
+import 'dart:html';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:insatgram/pages/kwon_page.dart';
 
@@ -81,7 +84,12 @@ class _HomePageState extends State<HomePage> {
 
   Widget _lee() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => kwon_page()),
+        );
+      },
       child: Stack(
         children: [
           ClipRRect(
@@ -104,7 +112,12 @@ class _HomePageState extends State<HomePage> {
 
   Widget _jang() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => kwon_page()),
+        );
+      },
       child: Stack(
         children: [
           ClipRRect(
@@ -127,7 +140,12 @@ class _HomePageState extends State<HomePage> {
 
   Widget _hwang() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => kwon_page()),
+        );
+      },
       child: Stack(
         children: [
           ClipRRect(
@@ -150,7 +168,12 @@ class _HomePageState extends State<HomePage> {
 
   Widget _hong() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => kwon_page()),
+        );
+      },
       child: Stack(
         children: [
           ClipRRect(
@@ -178,27 +201,75 @@ class _HomePageState extends State<HomePage> {
         const SizedBox(
           width: 10,
         ),
-        _twelve(),
+        Column(
+          children: [
+            _twelve(),
+            Text(
+              "12조 자산가들",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
         const SizedBox(
           width: 10,
         ),
-        _kwon(),
+        Column(
+          children: [
+            _kwon(),
+            Text(
+              "권용일",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
         const SizedBox(
           width: 10,
         ),
-        _lee(),
+        Column(
+          children: [
+            _lee(),
+            Text(
+              "이승현",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
         const SizedBox(
           width: 10,
         ),
-        _jang(),
+        Column(
+          children: [
+            _jang(),
+            Text(
+              "장석수",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
         const SizedBox(
           width: 10,
         ),
-        _hwang(),
+        Column(
+          children: [
+            _hwang(),
+            Text(
+              "황현아",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
         const SizedBox(
           width: 10,
         ),
-        _hong(),
+        Column(
+          children: [
+            _hong(),
+            Text(
+              "홍현민",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
         const SizedBox(
           width: 10,
         ),
@@ -265,7 +336,7 @@ class _HomePageState extends State<HomePage> {
               });
             },
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(0),
               child: Image.network(
                 "https://i.ibb.co/vz5Xw9D/12jjo.jpg",
                 height: 250,
@@ -274,6 +345,22 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+          Row(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isFavorite = !isFavorite;
+                    });
+                  },
+                  icon: Icon(
+                    isFavorite
+                        ? CupertinoIcons.heart_fill
+                        : CupertinoIcons.heart,
+                    color: isFavorite ? Colors.pink : Colors.black,
+                  )),
+            ],
+          )
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
