@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'first_pages.dart';
+import 'second_pages.dart';
 
 void main() {
   runApp(MyApp());
