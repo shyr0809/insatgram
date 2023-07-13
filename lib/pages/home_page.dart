@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'kwon_page.dart';
 import 'package:insatgram/pages/storyBoardList.dart';
 
 class HomePage extends StatefulWidget {
