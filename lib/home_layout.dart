@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:insatgram/feed_service.dart';
 
 class HomeLayout extends StatefulWidget {
-  const HomeLayout({super.key, required this.feedService});
+  const HomeLayout({
+    super.key,
+    required this.feedService,
+    required this.selectedIndex,
+  });
 
   final FeedService feedService;
+  final int selectedIndex;
 
   @override
   State<HomeLayout> createState() => _HomeLayoutState();
@@ -15,6 +20,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   Widget build(BuildContext context) {
     FeedService feedService = widget.feedService;
     List<Feed> feedList = widget.feedService.feedList;
+    int _selectedIndex = widget.selectedIndex;
     return Column(
       children: [
         Container(
