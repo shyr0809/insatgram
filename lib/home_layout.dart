@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insatgram/feed_service.dart';
+import 'package:insatgram/personal_layout.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({
@@ -36,8 +37,11 @@ class _HomeLayoutState extends State<HomeLayout> {
                       print(i.toString());
                       setState(() {
                         _selectedIndex = 1;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const PersonalLayout()));
                       });
-                      // Navigator.push(context, MaterialPageRoute(builder: (_) => )))
                     },
                     child: Text(feedList[i + 1].person), // 팀원 image 넣기
                     style: ElevatedButton.styleFrom(
