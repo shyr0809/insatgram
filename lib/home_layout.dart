@@ -32,7 +32,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
-              for (int i = 0; i < feedList.length - 1; i++)
+              for (int i = 0; i < feedList.length; i++)
                 Padding(
                   padding: const EdgeInsets.all(2.5),
                   child: Padding(
