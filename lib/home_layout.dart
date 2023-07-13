@@ -34,6 +34,9 @@ class _HomeLayoutState extends State<HomeLayout> {
                   child: ElevatedButton(
                     onPressed: () {
                       print(i.toString());
+                      setState(() {
+                        _selectedIndex = 1;
+                      });
                       // Navigator.push(context, MaterialPageRoute(builder: (_) => )))
                     },
                     child: Text(feedList[i + 1].person), // 팀원 image 넣기
