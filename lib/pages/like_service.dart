@@ -1,34 +1,41 @@
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 
-class LikeList {
-  final String image;
-  final String text;
-
-  LikeList({
+class Like {
+  Like({
     required this.image,
     required this.text,
   });
+  String image;
+  String text;
 }
 
-List <LikeList> likelist = [
-  LikeList(
+List <Like> likelist = [
+  Like(
     image: 'image', 
     text: 'text',
     ),
-    LikeList(
+    Like(
     image: 'image', 
     text: 'text',
     ),
-    LikeList(
+    Like(
     image: 'image', 
     text: 'text',
     ),
-    LikeList(
+    Like(
     image: 'image', 
     text: 'text',
     ),
-    LikeList(
+    Like(
     image: 'image', 
     text: 'text',
     ),
 ]
+
+class LikeList extends ChangeNotifier {
+  List<Like> likelist = [
+    Like(content: 'image'),
+
+  ];
+}
