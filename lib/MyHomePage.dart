@@ -18,6 +18,31 @@ class _MyHomePageState extends State<MyHomePage> {
   int _dropdownIndex = 0;
   int _bottomSelectedIndex = 0; // bottomNavigation index
 
+  Widget _buildBody() {
+    switch (_selectedIndex) {
+      case 0:
+        return HomeLayout(
+          feedService: Provider.of<FeedService>(context),
+          selectedIndex: _selectedIndex,
+          dropdownIndex: _dropdownIndex,
+        );
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+        return PersonalLayout(
+          feedService: Provider.of<FeedService>(context),
+          selectedIndex: _selectedIndex,
+        );
+      default:
+        return LikeListPage(
+          feedService: Provider.of<FeedService>(context),
+          selectedIndex: _selectedIndex,
+        );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<FeedService>(
@@ -29,32 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
         return Scaffold(
           appBar: appbar(context, dropDownItems),
           bottomNavigationBar: bottomNaivgationBar(),
-          body: Navigator(
-            initialRoute: '/',
-            onGenerateRoute: (RouteSettings settings) {
-              WidgetBuilder builder;
-              switch (settings.name) {
-                case '/':
-                  builder = (BuildContext context) => HomeLayout(
-                      feedService: feedService, selectedIndex: _selectedIndex);
-                  break;
-                case '/page1':
-                  builder = (BuildContext context) => PersonalLayout(
-                      feedService: feedService, selectedIndex: _selectedIndex);
-                  break;
-                case '/page2':
-                  builder = (BuildContext context) => LikeListPage(
-                      feedService: feedService, selectedIndex: _selectedIndex);
-                  break;
-                default:
-                  throw Exception('Invalid route: ${settings.name}');
-              }
-              return MaterialPageRoute(
-                builder: builder,
-                settings: settings,
-              );
-            },
-          ),
+          body: _buildBody(),
         );
       },
     );
@@ -74,10 +74,11 @@ class _MyHomePageState extends State<MyHomePage> {
           _bottomSelectedIndex = index;
           switch (index) {
             case 0:
-              Navigator.pushNamed(context, '/');
+              _selectedIndex = 0;
+              _dropdownIndex = 0;
               break;
             case 1:
-              Navigator.pushNamed(context, '/page2');
+              _selectedIndex = 6;
               break;
             default:
               throw Exception('Invalid bottom navigation item');
@@ -113,11 +114,6 @@ class _MyHomePageState extends State<MyHomePage> {
               _dropdownIndex = dropDownItems.indexOf(value!);
               _selectedIndex = _dropdownIndex;
             });
-            if (_dropdownIndex == 0) {
-              Navigator.pushNamed(context, '/');
-            } else {
-              Navigator.pushNamed(context, '/page1');
-            }
           },
         ),
       ),

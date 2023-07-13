@@ -7,10 +7,12 @@ class HomeLayout extends StatefulWidget {
     super.key,
     required this.feedService,
     required this.selectedIndex,
+    required this.dropdownIndex,
   });
 
   final FeedService feedService;
   final int selectedIndex;
+  final int dropdownIndex;
 
   @override
   State<HomeLayout> createState() => _HomeLayoutState();
@@ -22,6 +24,7 @@ class _HomeLayoutState extends State<HomeLayout> {
     FeedService feedService = widget.feedService;
     List<Feed> feedList = widget.feedService.feedList;
     int _selectedIndex = widget.selectedIndex;
+    int _dropdownIndex = widget.dropdownIndex;
     return Column(
       children: [
         Container(
@@ -38,8 +41,9 @@ class _HomeLayoutState extends State<HomeLayout> {
                       onTap: () {
                         setState(() {
                           _selectedIndex = (i + 1);
+                          _dropdownIndex = i;
+                          print(i);
                         });
-                        Navigator.pushNamed(context, '/page1');
                       },
                       child: Stack(
                         children: [
@@ -123,12 +127,18 @@ class _HomeLayoutState extends State<HomeLayout> {
           // 남은 공간 다 차지
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: SingleChildScrollView(
-                // 스크롤 가능한 영역
-                child: Text(
-              feedList[_selectedIndex].content.toString(),
-              textAlign: TextAlign.start,
-            )),
+            child: ListView.separated(
+              itemBuilder: (context, index) {
+                return Text(
+                  feedList[_selectedIndex].content[index],
+                  style: TextStyle(fontSize: 15, color: Colors.black),
+                );
+              },
+              separatorBuilder: (context, index) {
+                return Divider();
+              },
+              itemCount: feedList[_selectedIndex].content.length,
+            ),
           ),
         )
       ],
