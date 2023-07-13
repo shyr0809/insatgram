@@ -7,6 +7,7 @@ class kwon_page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return Consumer<LikeList>(
       builder: (context, LikeList, child) {
         List<Like> likelist = LikeList.likelist;
@@ -24,6 +25,12 @@ class kwon_page extends StatelessWidget {
                 ),
               ),);
       }
+=======
+    return Center(
+      child: Text(
+        '권용일님 페이집니당.',
+      ),
+>>>>>>> 87ed2b4476189feff532dde4f0dfa2e9065be4e6
     );
     }
 }ssss
