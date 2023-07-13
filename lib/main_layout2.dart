@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:insatgram/pages/like_service.dart';
+import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+class FirstPage extends StatelessWidget {
+  FirstPage({Key? key}) : super(key: key);
   final List<Map<String, dynamic>> data1 = [
     {
       'name': 'hwang',
@@ -22,7 +24,7 @@ class HomePage extends StatelessWidget {
   final List<Map<String, dynamic>> data3 = [
     {
       'name': 'kwon',
-      'textData': '개인 소개글333',
+      'textData': '개인 소개글444',
       'imageUrl':
           'https://image.dongascience.com/Photo/2019/05/3e95c45fbe6710365e999ebbd32ed37e.jpg',
     }
@@ -104,103 +106,109 @@ class _PersonalPageState extends State<PersonalPage> {
     String textData = currentData['textData'];
     String imageUrl = currentData['imageUrl'];
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: Row(
-            children: [
-              SizedBox(width: 20),
-              Text(
-                // 사용자 이름
-                name,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 22,
-                ),
-              ),
-              Icon(
-                Icons.keyboard_arrow_down_rounded,
-                color: Colors.black,
-              ),
-            ],
-          ),
-          leadingWidth: 120,
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
+    return Consumer<LikeList>(
+      builder: (context, LikeList, child) { // Likelist로 부터 likelist 가져오기
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              leading: Row(
                 children: [
-                  ClipRRect(
-                    // 사용자 이미지
-                    borderRadius: BorderRadius.circular(125),
-                    child: Image.network(
-                      imageUrl,
-                      width: 150,
-                      height: 150,
-                      fit: BoxFit.cover,
+                  SizedBox(width: 20),
+                  Text(
+                    // 사용자 이름
+                    name,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
                     ),
                   ),
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.2),
-                  GestureDetector(
-                    // 하트 이모티콘 (클릭)
-                    onTap: () {
-                      setState(() {
-                        heart = !heart;
-                      });
-                    },
-                    child: Icon(
-                      heart ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
-                      color: heart ? Colors.redAccent : Colors.black,
-                      size: 70,
-                    ),
+                  Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: Colors.black,
                   ),
                 ],
               ),
-              SizedBox(height: MediaQuery.of(context).size.width * 0.1),
-              Text(
-                // 개인 소개글
-                textData,
-                style: TextStyle(fontSize: 20, color: Colors.black),
+              leadingWidth: 120,
+            ),
+            body: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      ClipRRect(
+                        // 사용자 이미지
+                        borderRadius: BorderRadius.circular(125),
+                        child: Image.network(
+                          imageUrl,
+                          width: 150,
+                          height: 150,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.2),
+                      GestureDetector(
+                        // 하트 이모티콘 (클릭)
+                        onTap: () {
+                          setState(() {
+                            heart = !heart;
+                          });
+                        },
+                        child: Icon(
+                          heart
+                              ? CupertinoIcons.heart_fill
+                              : CupertinoIcons.heart,
+                          color: heart ? Colors.redAccent : Colors.black,
+                          size: 70,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.width * 0.1),
+                  Text(
+                    // 개인 소개글
+                    textData,
+                    style: TextStyle(fontSize: 20, color: Colors.black),
+                  ),
+                ],
               ),
-            ],
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              selectedItemColor: Colors.black,
+              unselectedItemColor: Colors.black,
+              currentIndex: _selectedIndex,
+              onTap: (int index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+                if (index == 0) {
+                  Navigator.pop(context);
+                }
+              },
+              items: [
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.home_filled,
+                    size: 40,
+                  ),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    CupertinoIcons.heart_fill,
+                    size: 38,
+                  ),
+                  label: 'Like',
+                ),
+              ],
+            ),
           ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.black,
-          currentIndex: _selectedIndex,
-          onTap: (int index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-            if (index == 0) {
-              Navigator.pop(context);
-            }
-          },
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_filled,
-                size: 40,
-              ),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                CupertinoIcons.heart_fill,
-                size: 38,
-              ),
-              label: 'Like',
-            ),
-          ],
-        ),
-      ),
+        );
+      },
     );
   }
 }
