@@ -1,60 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:insatgram/feed_service.dart';
+import 'package:provider/provider.dart';
+import 'MyHomePage.dart';
 
 void main() {
-  runApp(MyApp());
-}
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => FeedService()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            "Hello Flutter",
-            style: TextStyle(fontSize: 28),
-          ),
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(32),
-                  child: Image.network(
-                    "https://i.ibb.co/nngK6j3/startup.png",
-                    width: 81,
-                  ),
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: '이메일',
-                  ),
-                ),
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: '비밀번호',
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  margin: EdgeInsets.only(top: 24),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text("로그인"),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      title: 'insatgram',
+      home: MyHomePage(),
     );
   }
 }
