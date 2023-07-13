@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:insatgram/feed_service.dart';
+import 'package:insatgram/main_layout2.dart';
+import 'package:insatgram/personal_layout.dart';
 import 'package:provider/provider.dart';
 
 import 'home_layout.dart';
@@ -13,6 +15,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0; // 현 페이지 index 설정
+  int _dropdownIndex = 0;
   int _bottomSelectedIndex = 0; // bottomNavigation index
 
   @override
@@ -23,13 +26,16 @@ class _MyHomePageState extends State<MyHomePage> {
         List<String> dropDownItems = feedList
             .map((e) => e.person == "12조 자산가들" ? "insatgram" : e.person)
             .toList(); // DropDownList item
+        List<Widget> _layoutList = <Widget>[
+          // 0은 main으로 마지막은 팔로잉 리스트 중간에 개인 layout으로
+          HomeLayout(feedService: feedService, selectedIndex: _selectedIndex),
+          PersonalLayout(),
+        ];
         return Scaffold(
           appBar: appbar(context, dropDownItems),
           bottomNavigationBar: bottomNaivgationBar(),
           body: SafeArea(
-            child: HomeLayout(
-              feedService: feedService,
-            ),
+            child: _layoutList[_selectedIndex],
           ),
         );
       },
@@ -72,11 +78,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             );
           }).toList(),
-          value: dropDownItems[_selectedIndex], // 현 item value 설정
+          value: dropDownItems[_dropdownIndex], // 현 item value 설정
           onChanged: (String? value) {
             // dropdownlist 변경
             setState(() {
-              _selectedIndex = dropDownItems.indexOf(value!);
+              _selectedIndex = (value == "insatgram" ? 0 : 1);
+              _dropdownIndex = dropDownItems.indexOf(value!);
               // Navigator.push(context, MaterialPageRoute(builder: (_) => )))
             });
           },
@@ -87,8 +94,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _onBottomTapped(int value) {
     // navigationbar 클릭시 변화
-    value == 0 ? print("home") : print("following");
+
     setState(() {
+      value == 0 ? _selectedIndex = 0 : _selectedIndex = 1; // 임시로 일단 개인 페이지로
       _bottomSelectedIndex = value;
     });
   }
