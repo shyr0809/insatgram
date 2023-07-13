@@ -8,17 +8,20 @@ class Feed {
     required this.content,
     this.isFavorite = false,
     this.mbti = "",
+    required this.imgurl,
   });
 
   String person;
   List<String> content;
   bool isFavorite;
   String mbti;
+  String imgurl;
 }
 
 class FeedService extends ChangeNotifier {
   List<Feed> feedList = [
     Feed(
+      imgurl: "https://i.ibb.co/tKn3013/12jo.jpg",
       person: "12조 자산가들",
       content: [
         "안녕하세요.\n\n\n\n\n\n\n\n\n\n\n첫 주에 함께 팀을 맺게 되어서 영광입니다.\n\n\n I임에 더불어서 첫주라 서로에게 말을 쉽게 하지 못했던 거 같습니다. 남은 몇일동안은 다시 만나면 쉽게 인사할 사이까지만이라도 친해졌으면 합니다.\n 제가 몇개는 설명해드렸는데, 아직 설명에 미숙함 점 죄송드립니다. 다들 원하시던 일들 잘 풀리시기 기원합니다.",
@@ -26,6 +29,7 @@ class FeedService extends ChangeNotifier {
       isFavorite: true,
     ),
     Feed(
+      imgurl: "https://i.ibb.co/RHBWbZ3/kwon.jpg",
       person: "권용일",
       content: [
         "INTJ",
@@ -39,6 +43,7 @@ class FeedService extends ChangeNotifier {
       ],
     ),
     Feed(
+      imgurl: "https://i.ibb.co/yNmwQH1/lee.jpg",
       person: "이승현",
       content: [
         "다람쥐(소심하고 겁이 많음)",
@@ -52,6 +57,7 @@ class FeedService extends ChangeNotifier {
       mbti: "isfj",
     ),
     Feed(
+      imgurl: "https://i.ibb.co/Z2y4hDF/jang.jpg",
       person: "장석수",
       content: [
         "INFP",
@@ -63,6 +69,7 @@ class FeedService extends ChangeNotifier {
       ],
     ),
     Feed(
+      imgurl: "https://i.ibb.co/wdpPmYB/hong.jpg",
       person: "홍현민",
       content: [
         "ENFP",
@@ -76,6 +83,7 @@ class FeedService extends ChangeNotifier {
       ],
     ),
     Feed(
+      imgurl: "https://i.ibb.co/31ks7KK/hwang.jpg",
       person: "황현아",
       content: [
         "ISFP",

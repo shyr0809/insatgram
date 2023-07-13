@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insatgram/feed_service.dart';
-import 'package:insatgram/main_layout2.dart';
+import 'package:insatgram/likeListPage.dart';
 import 'package:insatgram/personal_layout.dart';
 import 'package:provider/provider.dart';
 
@@ -26,16 +26,34 @@ class _MyHomePageState extends State<MyHomePage> {
         List<String> dropDownItems = feedList
             .map((e) => e.person == "12조 자산가들" ? "insatgram" : e.person)
             .toList(); // DropDownList item
-        List<Widget> _layoutList = <Widget>[
-          // 0은 main으로 마지막은 팔로잉 리스트 중간에 개인 layout으로
-          HomeLayout(feedService: feedService, selectedIndex: _selectedIndex),
-          PersonalLayout(),
-        ];
         return Scaffold(
           appBar: appbar(context, dropDownItems),
           bottomNavigationBar: bottomNaivgationBar(),
-          body: SafeArea(
-            child: _layoutList[_selectedIndex],
+          body: Navigator(
+            initialRoute: '/',
+            onGenerateRoute: (RouteSettings settings) {
+              WidgetBuilder builder;
+              switch (settings.name) {
+                case '/':
+                  builder = (BuildContext context) => HomeLayout(
+                      feedService: feedService, selectedIndex: _selectedIndex);
+                  break;
+                case '/page1':
+                  builder = (BuildContext context) => PersonalLayout(
+                      feedService: feedService, selectedIndex: _selectedIndex);
+                  break;
+                case '/page2':
+                  builder = (BuildContext context) => LikeListPage(
+                      feedService: feedService, selectedIndex: _selectedIndex);
+                  break;
+                default:
+                  throw Exception('Invalid route: ${settings.name}');
+              }
+              return MaterialPageRoute(
+                builder: builder,
+                settings: settings,
+              );
+            },
           ),
         );
       },
@@ -51,7 +69,21 @@ class _MyHomePageState extends State<MyHomePage> {
       showSelectedLabels: false,
       showUnselectedLabels: false,
       currentIndex: _bottomSelectedIndex,
-      onTap: _onBottomTapped,
+      onTap: (index) {
+        setState(() {
+          _bottomSelectedIndex = index;
+          switch (index) {
+            case 0:
+              Navigator.pushNamed(context, '/');
+              break;
+            case 1:
+              Navigator.pushNamed(context, '/page2');
+              break;
+            default:
+              throw Exception('Invalid bottom navigation item');
+          }
+        });
+      },
     );
   }
 
@@ -80,24 +112,18 @@ class _MyHomePageState extends State<MyHomePage> {
           }).toList(),
           value: dropDownItems[_dropdownIndex], // 현 item value 설정
           onChanged: (String? value) {
-            // dropdownlist 변경
             setState(() {
-              _selectedIndex = (value == "insatgram" ? 0 : 1);
               _dropdownIndex = dropDownItems.indexOf(value!);
-              // Navigator.push(context, MaterialPageRoute(builder: (_) => )))
+              _selectedIndex = _dropdownIndex; // _selectedIndex 업데이트
             });
+            if (_dropdownIndex == 0) {
+              Navigator.pushNamed(context, '/');
+            } else {
+              Navigator.pushNamed(context, '/page1');
+            }
           },
         ),
       ),
     );
-  }
-
-  void _onBottomTapped(int value) {
-    // navigationbar 클릭시 변화
-
-    setState(() {
-      value == 0 ? _selectedIndex = 0 : _selectedIndex = 1; // 임시로 일단 개인 페이지로
-      _bottomSelectedIndex = value;
-    });
   }
 }

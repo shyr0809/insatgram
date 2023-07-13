@@ -32,23 +32,33 @@ class _HomeLayoutState extends State<HomeLayout> {
               for (int i = 0; i < feedList.length - 1; i++)
                 Padding(
                   padding: const EdgeInsets.all(2.5),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      print(i.toString());
-                      setState(() {
-                        _selectedIndex = 1;
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const PersonalLayout()));
-                      });
-                    },
-                    child: Text(feedList[i + 1].person), // 팀원 image 넣기
-                    style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(73.5, 73.5),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(// 원형 모양 버튼
-                            MediaQuery.of(context).size.width * 0.1),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 1),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          _selectedIndex = (i + 1);
+                        });
+                        print("dowowow${i}");
+                        Navigator.pushNamed(context, '/page1');
+                      },
+                      child: Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(70),
+                            child: Container(
+                                width: 70,
+                                height: 70,
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 1),
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle, color: Colors.grey),
+                                child: Image.network(
+                                  feedList[i].imgurl,
+                                  fit: BoxFit.cover,
+                                )),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -70,13 +80,20 @@ class _HomeLayoutState extends State<HomeLayout> {
             ),
           ),
         ),
-        SizedBox(
-          // feed image 영역
-          width: MediaQuery.of(context).size.width * 0.9,
-          height: MediaQuery.of(context).size.width * 0.75,
-          child: Container(
-            color: Colors.yellow,
-          ),
+        InkWell(
+          onDoubleTap: () {
+            setState(() {
+              feedService.updateFavoriteFeed(index: _selectedIndex);
+            });
+          },
+          child: SizedBox(
+              // feed image 영역
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: MediaQuery.of(context).size.width * 0.75,
+              child: Image.network(
+                "https://i.ibb.co/vz5Xw9D/12jjo.jpg",
+                fit: BoxFit.fill,
+              )),
         ),
         Row(
           // feed button 영역
@@ -85,10 +102,10 @@ class _HomeLayoutState extends State<HomeLayout> {
             IconButton(
               onPressed: () {
                 setState(() {
-                  feedService.updateFavoriteFeed(index: 0);
+                  feedService.updateFavoriteFeed(index: _selectedIndex);
                 });
               },
-              icon: feedList[0].isFavorite
+              icon: feedList[_selectedIndex].isFavorite
                   ? const Icon(
                       Icons.favorite,
                       color: Colors.pink,
@@ -105,12 +122,15 @@ class _HomeLayoutState extends State<HomeLayout> {
         ),
         Expanded(
           // 남은 공간 다 차지
-          child: SingleChildScrollView(
-              // 스크롤 가능한 영역
-              child: Text(
-            feedList[0].content.toString(),
-            textAlign: TextAlign.start,
-          )),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: SingleChildScrollView(
+                // 스크롤 가능한 영역
+                child: Text(
+              feedList[_selectedIndex].content.toString(),
+              textAlign: TextAlign.start,
+            )),
+          ),
         )
       ],
     );
