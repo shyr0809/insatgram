@@ -9,20 +9,20 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (context) => FeedService()),
       ],
-      child: const MyApp(),
+      child: const m(),
     ),
   );
-}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'insatgram',
       home: MyHomePage(),
     );
   }
-}
+}}
