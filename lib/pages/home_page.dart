@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+<<<<<<< HEAD
 import 'package:insatgram/pages/storyboardlist.dart';
 
+=======
+>>>>>>> 41825f2e80042d976a41a6e3b8f0752325c4cc31
 //15번째 줄부터 279번째 줄까지 앱바 밑 스크롤 뷰 위젯입니다.
 //286번째 줄부터 앱바입니다.
 class HomePage extends StatefulWidget {
@@ -13,6 +16,275 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+<<<<<<< HEAD
+=======
+  Widget _twelve() {
+    return InkWell(
+      onTap: () {},
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(65),
+            child: Container(
+                width: 60,
+                height: 60,
+                margin: const EdgeInsets.symmetric(horizontal: 1),
+                decoration:
+                    BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+                child: Image.network(
+                  "https://i.ibb.co/tKn3013/12jo.jpg",
+                  fit: BoxFit.cover,
+                )),
+          ),
+          Positioned(
+              right: 5,
+              bottom: 0,
+              child: Container(
+                width: 20,
+                height: 20,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.blue,
+                    border: Border.all(color: Colors.white, width: 2)),
+                child: const Center(
+                  child: Text(
+                    "+",
+                    style: TextStyle(
+                        fontSize: 15, color: Colors.white, height: 1.1),
+                  ),
+                ),
+              ))
+        ],
+      ),
+    );
+  }
+
+  Widget _kwon() {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => kwon_page()),
+        );
+      },
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(65),
+            child: Container(
+              width: 60,
+              height: 60,
+              margin: const EdgeInsets.symmetric(horizontal: 1),
+              decoration:
+                  BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+              child: Image.network(
+                "https://i.ibb.co/RHBWbZ3/kwon.jpg",
+                fit: BoxFit.cover,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _lee() {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => kwon_page()),
+        );
+      },
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(65),
+            child: Container(
+                width: 60,
+                height: 60,
+                margin: const EdgeInsets.symmetric(horizontal: 1),
+                decoration:
+                    BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+                child: Image.network(
+                  "https://i.ibb.co/yNmwQH1/lee.jpg",
+                  fit: BoxFit.cover,
+                )),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _jang() {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => kwon_page()),
+        );
+      },
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(65),
+            child: Container(
+                width: 60,
+                height: 60,
+                margin: const EdgeInsets.symmetric(horizontal: 1),
+                decoration:
+                    BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+                child: Image.network(
+                  "https://i.ibb.co/Z2y4hDF/jang.jpg",
+                  fit: BoxFit.cover,
+                )),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _hwang() {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => kwon_page()),
+        );
+      },
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(65),
+            child: Container(
+                width: 60,
+                height: 60,
+                margin: const EdgeInsets.symmetric(horizontal: 1),
+                decoration:
+                    BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+                child: Image.network(
+                  "https://i.ibb.co/31ks7KK/hwang.jpg",
+                  fit: BoxFit.cover,
+                )),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _hong() {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => kwon_page()),
+        );
+      },
+      child: Stack(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(65),
+            child: Container(
+                width: 60,
+                height: 60,
+                margin: const EdgeInsets.symmetric(horizontal: 1),
+                decoration:
+                    BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+                child: Image.network(
+                  "https://i.ibb.co/wdpPmYB/hong.jpg",
+                  fit: BoxFit.cover,
+                )),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _storyBoardList() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: (Row(children: [
+        const SizedBox(
+          width: 10,
+        ),
+        Column(
+          children: [
+            _twelve(),
+            Text(
+              "12조 자산가들",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Column(
+          children: [
+            _kwon(),
+            Text("권용일", style: TextStyle(fontWeight: FontWeight.bold))
+          ],
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Column(
+          children: [
+            _lee(),
+            Text("v이승현v", style: TextStyle(fontWeight: FontWeight.bold))
+          ],
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Column(
+          children: [
+            _jang(),
+            Text("장석수", style: TextStyle(fontWeight: FontWeight.bold))
+          ],
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Column(
+          children: [
+            _hwang(),
+            Text("황현아", style: TextStyle(fontWeight: FontWeight.bold))
+          ],
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Column(
+          children: [
+            _hong(),
+            Text("홍현민", style: TextStyle(fontWeight: FontWeight.bold))
+          ],
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        ...List.generate(
+            1,
+            (index) => ClipRRect(
+                  borderRadius: BorderRadius.circular(60),
+                  child: Container(
+                    width: 65,
+                    height: 65,
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle, color: Colors.grey),
+                    child: Image.network(
+                      "https://i.ibb.co/nngK6j3/startup.png",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ))
+      ])),
+    );
+  }
+
+>>>>>>> 41825f2e80042d976a41a6e3b8f0752325c4cc31
   bool isFavorite = false;
 
   @override

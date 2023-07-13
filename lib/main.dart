@@ -21,8 +21,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'insatgram',
-        home: HomePage());
+      debugShowCheckedModeBanner: false,
+      title: 'insatgram',
+      home: MyHomePage(),
+    );
   }
 }
