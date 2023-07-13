@@ -28,7 +28,6 @@ class _PersonalLayoutState extends State<PersonalLayout> {
           Row(
             children: [
               ClipRRect(
-                // 사용자 이미지
                 borderRadius: BorderRadius.circular(125),
                 child: Image.network(
                   feedList[_selectedIndex].imgurl,
@@ -39,9 +38,10 @@ class _PersonalLayoutState extends State<PersonalLayout> {
               ),
               SizedBox(width: MediaQuery.of(context).size.width * 0.2),
               GestureDetector(
-                // 하트 이모티콘 (클릭)
                 onTap: () {
-                  feedService.updateFavoriteFeed(index: _selectedIndex);
+                  setState(() {
+                    feedService.updateFavoriteFeed(index: _selectedIndex);
+                  });
                 },
                 child: Icon(
                   feedList[_selectedIndex].isFavorite
@@ -58,18 +58,18 @@ class _PersonalLayoutState extends State<PersonalLayout> {
           SizedBox(height: MediaQuery.of(context).size.width * 0.1),
           Expanded(
             child: ListView.separated(
-                itemBuilder: (context, index) {
-                  return Text(
-                    // 개인 소개글
-                    feedList[_selectedIndex].content[index],
-                    style: TextStyle(fontSize: 20, color: Colors.black),
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return Divider();
-                },
-                itemCount: feedList[_selectedIndex].content.length),
-          )
+              itemBuilder: (context, index) {
+                return Text(
+                  feedList[_selectedIndex].content[index],
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                );
+              },
+              separatorBuilder: (context, index) {
+                return Divider();
+              },
+              itemCount: feedList[_selectedIndex].content.length,
+            ),
+          ),
         ],
       ),
     );

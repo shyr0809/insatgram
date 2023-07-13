@@ -89,20 +89,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   AppBar appbar(BuildContext context, List<String> dropDownItems) {
     return AppBar(
-      elevation: 0, // appbar body와의 높이 설정
+      elevation: 0,
       backgroundColor: Colors.white,
-      leadingWidth:
-          MediaQuery.of(context).size.width * 0.5, // leading 가로 앱 사이즈 가로의 50%
+      leadingWidth: MediaQuery.of(context).size.width * 0.5,
       leading: Padding(
         padding: const EdgeInsets.only(left: 20),
         child: DropdownButton(
-          // dropdownbutton
-          underline: const SizedBox.shrink(), // dropdown item 밑줄 설정
-          alignment: Alignment.center, // dropdown item 가운데 설정
+          underline: const SizedBox.shrink(),
+          alignment: Alignment.center,
           items: dropDownItems.map<DropdownMenuItem<String>>((String value) {
-            // dropdown item 넣는 코드인데 어떤 원리로 되는지 잘 모르겠습니다.
             return DropdownMenuItem<String>(
-              value: value, // item value라고 index와 같은 의미라고 할 수 있다.
+              value: value,
               child: Text(
                 value,
                 style:
@@ -110,11 +107,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             );
           }).toList(),
-          value: dropDownItems[_dropdownIndex], // 현 item value 설정
+          value: dropDownItems[_dropdownIndex],
           onChanged: (String? value) {
             setState(() {
               _dropdownIndex = dropDownItems.indexOf(value!);
-              _selectedIndex = _dropdownIndex; // _selectedIndex 업데이트
+              _selectedIndex = _dropdownIndex;
             });
             if (_dropdownIndex == 0) {
               Navigator.pushNamed(context, '/');

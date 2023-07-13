@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:insatgram/feed_service.dart';
 
 class LikeListPage extends StatefulWidget {
-  const LikeListPage(
-      {Key? key, required this.feedService, required this.selectedIndex})
-      : super(key: key);
+  const LikeListPage({
+    Key? key,
+    required this.feedService,
+    required this.selectedIndex,
+  }) : super(key: key);
 
   final FeedService feedService;
   final int selectedIndex;
 
   @override
-  State<LikeListPage> createState() => _LikeListPageState();
+  _LikeListPageState createState() => _LikeListPageState();
 }
 
 class _LikeListPageState extends State<LikeListPage> {
@@ -22,10 +24,10 @@ class _LikeListPageState extends State<LikeListPage> {
     return ListView.builder(
       itemCount: feedList.length - 1,
       itemBuilder: (context, index) {
-        ListTile(
+        return ListTile(
           leading:
-              Image.network(feedList[index + 1].imgurl), //likelist 이미지 가져오기
-          title: Text(feedList[index + 1].person), //likelist text 가져오기
+              Image.network(feedList[index + 1].imgurl), // likelist 이미지 가져오기
+          title: Text(feedList[index + 1].person), // likelist text 가져오기
           trailing: IconButton(
             onPressed: () {
               setState(() {

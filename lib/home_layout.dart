@@ -39,7 +39,6 @@ class _HomeLayoutState extends State<HomeLayout> {
                         setState(() {
                           _selectedIndex = (i + 1);
                         });
-                        print("dowowow${i}");
                         Navigator.pushNamed(context, '/page1');
                       },
                       child: Stack(
