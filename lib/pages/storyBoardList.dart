@@ -1,17 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:insatgram/pages/kwon_page.dart';
 
-import 'package:insatgram/pages/storyBoardList.dart';
-
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class storyBoardList extends StatefulWidget {
+  const storyBoardList({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<storyBoardList> createState() => _storyBoardListState();
 }
 
-class _HomePageState extends State<HomePage> {
-  Widget _twelve() {
+class _storyBoardListState extends State<storyBoardList> {
+  Widget twelve() {
     return InkWell(
       onTap: () {},
       child: Stack(
@@ -52,7 +50,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _kwon() {
+  Widget kwon() {
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -81,7 +79,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _lee() {
+  Widget lee() {
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -109,7 +107,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _jang() {
+  Widget jang() {
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -137,7 +135,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _hwang() {
+  Widget hwang() {
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -165,7 +163,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _hong() {
+  Widget hong() {
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -193,7 +191,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _storyBoardList() {
+  Widget storyBoardList() {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: (Row(children: [
@@ -202,7 +200,7 @@ class _HomePageState extends State<HomePage> {
         ),
         Column(
           children: [
-            _twelve(),
+            twelve(),
             Text(
               "12조 자산가들",
               style: TextStyle(fontWeight: FontWeight.bold),
@@ -214,7 +212,7 @@ class _HomePageState extends State<HomePage> {
         ),
         Column(
           children: [
-            _kwon(),
+            kwon(),
             Text("권용일", style: TextStyle(fontWeight: FontWeight.bold))
           ],
         ),
@@ -223,7 +221,7 @@ class _HomePageState extends State<HomePage> {
         ),
         Column(
           children: [
-            _lee(),
+            lee(),
             Text("v이승현v", style: TextStyle(fontWeight: FontWeight.bold))
           ],
         ),
@@ -232,7 +230,7 @@ class _HomePageState extends State<HomePage> {
         ),
         Column(
           children: [
-            _jang(),
+            jang(),
             Text("장석수", style: TextStyle(fontWeight: FontWeight.bold))
           ],
         ),
@@ -241,7 +239,7 @@ class _HomePageState extends State<HomePage> {
         ),
         Column(
           children: [
-            _hwang(),
+            hwang(),
             Text("황현아", style: TextStyle(fontWeight: FontWeight.bold))
           ],
         ),
@@ -250,7 +248,7 @@ class _HomePageState extends State<HomePage> {
         ),
         Column(
           children: [
-            _hong(),
+            hong(),
             Text("홍현민", style: TextStyle(fontWeight: FontWeight.bold))
           ],
         ),
@@ -277,97 +275,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  bool isFavorite = false;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          title: Text(
-            "insatgram",
-            style: TextStyle(
-                fontSize: 32, color: Colors.black, fontFamily: "instagram"),
-          )),
-      body: ListView(
-        children: [
-          storyBoardList(),
-          Divider(
-            height: 5,
-          ),
-          Row(
-            children: [
-              const SizedBox(
-                width: 10,
-              ),
-              Text(
-                "12조 자산가들",
-                style: TextStyle(
-                    fontSize: 21,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          Divider(
-            height: 5,
-          ),
-          InkWell(
-            onDoubleTap: () {
-              setState(() {
-                isFavorite = !isFavorite;
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(0),
-              child: Image.network(
-                "https://i.ibb.co/vz5Xw9D/12jjo.jpg",
-                height: 250,
-                width: 100,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Row(
-            children: [
-              IconButton(
-                  onPressed: () {
-                    setState(() {
-                      isFavorite = !isFavorite;
-                    });
-                  },
-                  icon: Icon(
-                    isFavorite
-                        ? CupertinoIcons.heart_fill
-                        : CupertinoIcons.heart,
-                    color: isFavorite ? Colors.pink : Colors.black,
-                  )),
-            ],
-          )
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        fixedColor: Colors.black,
-        unselectedItemColor: Colors.black,
-        showUnselectedLabels: true,
-        selectedFontSize: 12,
-        unselectedFontSize: 12,
-        iconSize: 28,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
-            label: '홈',
-            backgroundColor: Colors.white,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: '좋아요 리스트',
-          ),
-        ],
-        currentIndex: 0,
-      ),
-    );
+    return storyBoardList();
   }
 }
