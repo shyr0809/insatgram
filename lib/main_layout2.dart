@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+class FirstPage extends StatelessWidget {
+  FirstPage({Key? key}) : super(key: key);
   final List<Map<String, dynamic>> data1 = [
     {
       'name': 'hwang',
