@@ -5,37 +5,40 @@ class Like {
   Like({
     required this.image,
     required this.text,
+    this.isFavorite = false,
   });
   String image;
   String text;
+  bool isFavorite;
 }
 
-List <Like> likelist = [
-  Like(
-    image: 'image', 
-    text: 'text',
+class LikeService extends ChangeNotifier {
+  List<Like> likeList = [
+    Like(
+      image: 'asset/images/human.png',
+      text: "text",
+      isFavorite: true,
+    ),
+    Like(image: 'asset/images/human.png', text: "text'"),
+    Like(
+      image: 'asset/images/human.png',
+      text: "text",
     ),
     Like(
-    image: 'image', 
-    text: 'text',
+      image: 'asset/images/human.png',
+      text: "text",
     ),
     Like(
-    image: 'image', 
-    text: 'text',
+      image: 'asset/images/human.png',
+      text: "text",
     ),
-    Like(
-    image: 'image', 
-    text: 'text',
-    ),
-    Like(
-    image: 'image', 
-    text: 'text',
-    ),
-]
+  ];
+}
 
 class LikeList extends ChangeNotifier {
-  List<Like> likelist = [
-    Like(content: 'image'),
-
-  ];
+  updateFavoriteFeed({required int index}) {
+    Like like = likeList[index];
+    like.isFavorite = !like.isFavorite;
+    notifyListeners();
+  }
 }
