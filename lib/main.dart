@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insatgram/feed_service.dart';
+import 'package:insatgram/layout5.dart';
 import 'package:provider/provider.dart';
 
 import 'MyHomePage.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'insatgram',
-      home: MyHomePage(),
+      home: layout5(),
     );
   }
 }

@@ -1,15 +1,18 @@
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:insatgram/feed_service.dart';
+import 'package:insatgram/main_layout2.dart';
+import 'package:insatgram/personal_layout.dart';
+import 'package:provider/provider.dart';
+class layout5 extends StatelessWidget {
+  const layout5({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            "Hello Flutter",
+            "Insatgram",
             style: TextStyle(fontSize: 28),
           ),
         ),
@@ -21,34 +24,40 @@ class MyApp extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(32),
                   child: Image.network(
-                    "https://i.ibb.co/nngK6j3/startup.png",
-                    width: 81,
+                    "https://i.postimg.cc/YqkKmvPt/2.png",
+                    width: 400,
                   ),
                 ),
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: '이메일',
+                Text(
+                 '1. 자신에 대한 설명 및 MBTI',
+                  style: TextStyle(
+                    fontSize: 25)
                   ),
-                ),
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: '비밀번호',
+                
+                Text(
+                    '2. 객관적으로 살펴본 자신의 장점',
+                  style: TextStyle(
+                    fontSize: 25)
                   ),
+                
+                Text(
+                    '3. 자신의 협업 스타일 소개',
+                  style: TextStyle(
+                    fontSize: 25)
                 ),
-                Container(
-                  width: double.infinity,
-                  margin: EdgeInsets.only(top: 24),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text("로그인"),
-                  ),
+                Text(                  
+                    '4. 블로그 주소',
+                  style: TextStyle(
+                    fontSize: 25)
                 ),
+                
+                  
+                
               ],
             ),
           ),
         ),
-      ),
-    );
+      )
+    ;
   }
 }
