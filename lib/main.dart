@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insatgram/feed_service.dart';
+
 import 'package:provider/provider.dart';
 import 'MyHomePage.dart';
 
@@ -19,8 +20,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'insatgram',
       home: MyHomePage(),

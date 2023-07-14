@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:insatgram/feed_service.dart';
 import 'package:insatgram/personal_layout.dart';
+import 'package:insatgram/storyBoardList.dart';
+import 'package:insatgram/storyBoardList.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({
@@ -30,43 +32,9 @@ class _HomeLayoutState extends State<HomeLayout> {
         Container(
           height: 75,
           child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: [
-              for (int i = 0; i < feedList.length; i++)
-                Padding(
-                  padding: const EdgeInsets.all(2.5),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 1),
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {
-                          _selectedIndex = (i + 1);
-                          _dropdownIndex = i;
-                          print(i);
-                        });
-                      },
-                      child: Stack(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(70),
-                            child: Container(
-                                width: 70,
-                                height: 70,
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 1),
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle, color: Colors.grey),
-                                child: Image.network(
-                                  feedList[i].imgurl,
-                                  fit: BoxFit.cover,
-                                )),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-            ],
+            
+            children: [storyBoardList()]
+              
           ),
         ),
         Container(
