@@ -31,11 +31,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       children: [
         Container(
           height: 75,
-          child: ListView(
-            
-            children: [storyBoardList()]
-              
-          ),
+          child: ListView(children: [storyBoardList()]),
         ),
         Container(
           // feed title 영역
