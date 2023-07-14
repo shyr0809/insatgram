@@ -28,9 +28,6 @@ class kwon_page extends StatelessWidget {
 =======
     return Center(
       child: Text(
-        '권용일님 페이집니당.',
+        '권용일님 페이집니.',
       ),
->>>>>>> 87ed2b4476189feff532dde4f0dfa2e9065be4e6
-    );
-    }
-}ssss
+>>>>>
