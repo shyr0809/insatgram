@@ -29,27 +29,29 @@
     
     ![와이어프레임3](./docs/와이어프레임3.png)
     
-    구현 못한 부분 ////
-    
-    기존 기획이라면 개인 화면으로 이동은 navigator로 이용해 넘어가는 것을 계획했다. navigtior push로 화면전환보다는 bottomnavigtionbar를 사용했기에 index를 통해 관리하는 것이 편하다고 생각되었다. appbar의 드롭다운 버튼 뿐만 아니라 homelayout의 원형 버튼에서도 개인 화면으로 넘어가도록 _seletedindex를 homelayout 인자로 넘겼다. homelayout에서 _seletedindex를 final로 받은 것이 잘못이였다고 생각된다. final로 선언했기에 값이 변경이 불가능하다.
+    **→ 구현에 실패한 부분 : 스토리보드 클릭 시 개인 페이지로 이동**
+
+    BottomNavigationBar의 화면이동을 index로 하다보니 Navigator를 따로 사용하는 것 보다는 index로 화면 이동을 관리하는 것이 편하다고 생각하였습니다.
+
+    앱 구조를 생각하여 리펙토링하는 작업 도중에 화면 구성에 필요한 인자를 넘겼는데 그 과정에서 인자를 final로 받다보니 index변화를 감지하지 못해 생긴 일 같습니다.
     
 - **역할 분담**
     
     ### HomePage
     
-    **→ 이승현 :**
+    **→ 이승현 : main page ui와 listview를 이용한 스토리보드 구현**
     
-    **→ 홍현민 :**
+    **→ 홍현민 : main page 하트~text ui 구현&하트 클릭 시 provider를 활용한 data 변화**
     
     ### PersonalPage
     
-    **→ 황현아 :** 
+    **→ 황현아 : Navigator push로 위젯 간 데이터 전달하여 개별 이미지, 텍스트 화면에 표시** 
     
-    **→ 장석수 :** 
+    **→ 장석수 : PersonalPage UI 구현** 
     
     ### LikelistPage
     
-    **→ 권용일 :**
+    **→ 권용일 : LikelistPage의 UI와 provider(상태관리 패키지)를 활용하여 PersonalPage의 하트 아이콘 클릭 시 LikelistPage에 데이터를 전달하여 리스트 구현**
     
 - **어려웠던 점 & 해결 방식**
     
